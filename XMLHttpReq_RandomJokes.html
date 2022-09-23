@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XMLHttpRequest</title>
+</head>
+<body>
+    <h1 class="setup"></h1>
+    <h2 class="punchline"></h2>
+
+    <script>
+        req = new XMLHttpRequest()
+        req.open("GET","https://official-joke-api.appspot.com/random_joke")
+        req.send()
+
+        req.onload = function(){
+            if(req.status==200){
+                data = JSON.parse(req.responseText)
+                console.log(data)
+                document.querySelector(".setup").innerHTML = "Setup: " + data.setup
+
+                document.querySelector(".punchline").innerHTML = "Punch line: " + data.punchline
+            }else if(req.status == 404){
+                console.log("No Records Found")
+            }
+        }
+    
+    
+    
+    
+    
+    </script>
+
+    
+</body>
+</html>
